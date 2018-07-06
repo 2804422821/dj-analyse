@@ -13,4 +13,6 @@
 ![自愿捐助](http://47.97.117.238/tufuzi2018.jpg)
 
 # 捐助者名单，排名不分先后
-wings，
+wings
+名字太个性
+admond GUO
