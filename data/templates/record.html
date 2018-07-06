@@ -1,0 +1,77 @@
+{% extends 'layout_usercentre.html' %}
+{% load static %}
+{% block title %}
+    {{ app.name }}数据列表
+{% endblock %}
+
+{% block content %}
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+            <div class="col-md-5 col-8 align-self-center">
+                <h3 class="text-themecolor m-b-0 m-t-0">数据中心</h3>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'analyse:app_list' %}">数据中心</a></li>
+                    <li class="breadcrumb-item active">{{ app.name }}数据列表</li>
+                </ol>
+            </div>
+            <div class="col-md-7 col-4 align-self-center">
+                <div class="d-flex m-t-10 justify-content-end">
+                    <a href="{% url 'analyse:field_add' app.id %}"
+                       class="btn btn-success waves-effect waves-light">新增记录</a>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="col-md-12">
+                            <div class="table-responsive m-t-20" style="clear: both;">
+                                <table id="list" class="table table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Position</th>
+                                        <th>Office</th>
+                                        <th>Age</th>
+                                        <th>Start date</th>
+                                        <th>Salary</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+{% endblock %}
+
+{% block headstyle %}
+    <link href="{% static 'material-pro/assets/plugins/datatables/jquery.dataTables.min.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block bodyscript %}
+    <script src="{% static 'js/data/record.js' %}?v=20180701"></script>
+    <script src="{% static 'material-pro/assets/plugins/datatables/jquery.dataTables.min.js' %}"></script>
+{% endblock %}

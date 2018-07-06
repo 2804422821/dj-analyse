@@ -1,0 +1,74 @@
+{% extends 'layout_usercentre.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+            <div class="col-md-5 col-8 align-self-center">
+                <h3 class="text-themecolor m-b-0 m-t-0">数据中心</h3>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active">数据应用</li>
+                </ol>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <div class="row">
+            {% for app in apps %}
+                <!-- column -->
+                <div class="col-lg-3 col-md-6">
+                    <!-- Card -->
+                    <a href="{% url 'data:data_record' app.id %}">
+                        <div class="card card-item">
+                            {% if app.icon == '' %}
+                                <div style="background-image: url({% static 'images/defalut-app-icon.png' %});"
+                                     class="card-icon">
+                                    <img class="card-img-top img-responsive"
+                                         src="{% static 'images/blank.png' %}"
+                                         alt="{{ app.name }}">
+                                </div>
+                            {% else %}
+                                <div style="background-image: url(
+                                        {% static 'uploads/app/thumbnail/' %}{{ app.icon_file_name }});"
+                                     class="card-icon">
+                                    <img class="card-img-top img-responsive"
+                                         src="{% static 'images/blank.png' %}"
+                                         alt="{{ app.name }}">
+                                </div>
+                            {% endif %}
+                            <div class="card-body">
+                                <h4 class="card-title">{{ app.name }}</h4>
+                                <p class="card-text">{{ app.description }}</p>
+                            </div>
+                        </div>
+                        <!-- Card -->
+                    </a>
+                </div>
+                <!-- column -->
+            {% endfor %}
+        </div>
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+{% endblock %}
+
+{% block bodyscript %}
+
+    <script src="{% static 'js/analyse/app/list.js' %}?v=201806013"></script>
+
+{% endblock %}

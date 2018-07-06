@@ -1,0 +1,104 @@
+{% extends 'layout_usercentre.html' %}
+{% load static %}
+{% block title %}
+    {{ app.name }}字段列表
+{% endblock %}
+
+{% block content %}
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+            <div class="col-md-5 col-8 align-self-center">
+                <h3 class="text-themecolor m-b-0 m-t-0">数据应用</h3>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'analyse:app_list' %}">数据应用</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'analyse:field_list' app.id %}">{{ app.name }}字段列表</a></li>
+                    <li class="breadcrumb-item active">新增字段</li>
+                </ol>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">新增字段</h4>
+                        <form id="add_form" class="form-material m-t-40" method="post"
+                              action="{% url 'analyse:field_add' app.id %}">
+                            {% csrf_token %}
+                            <div class="form-body">
+                                <div class="form-group">
+                                    <label>名称 <span class="help"> 例如 "客户名称"，"数量"，"单价"</span></label>
+                                    {{ form.name }}
+                                </div>
+                                <div class="form-group">
+                                    <label>主键 <span class="help"> "同步中可以用来标识唯一"</span></label>
+                                    {{ form.is_key }}
+                                </div>
+                                <div class="form-group">
+                                    <label>字段标识 <span class="help"> "数据导入时，字段标识一样的数据导入到该字段中，如果不输入将自动生成"</span></label>
+                                    {{ form.bind_key }}
+                                </div>
+                                <div class="form-group">
+                                    <label>默认显示 <span class="help"> "字段是否默认显示在表格上"</span></label>
+                                    {{ form.default_show }}
+                                </div>
+                                <div class="form-group">
+                                    <label>类型 <span class="help"> </span></label>
+                                    {{ form.type }}
+                                </div>
+                                {% if errorMsg != '' %}
+                                    <div class="form-group m-t-20 text-danger">
+                                        {{ errorMsg }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="form-actions">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-12 text-right">
+                                                <button type="submit" class="btn btn-success"><i
+                                                        class="fa fa-check"></i> 保存
+                                                </button>
+                                                <a href="{% url 'analyse:field_list' app.id %}">返回</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+{% endblock %}
+
+{% block bodyscript %}
+    <script src="{% static 'js/analyse/field/add.js' %}?v=201806012"></script>
+    <script>
+        $(document).ready(function () {
+            add.init({
+                app_id: {{ app.id }}
+            });
+        });
+    </script>
+{% endblock %}

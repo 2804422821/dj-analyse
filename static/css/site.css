@@ -1,0 +1,20 @@
+.card-item-menu {
+    padding-right: 5px !important;
+}
+
+/*.card-item {*/
+    /*cursor: pointer;*/
+/*}*/
+
+.card-icon {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: auto 100%;
+    -moz-background-size: auto 100%;
+}
+
+.card-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

@@ -1,0 +1,124 @@
+{% extends 'layout_usercentre.html' %}
+{% load static %}
+{% block title %}
+    {{ app.name }}字段列表
+{% endblock %}
+
+{% block content %}
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+            <div class="col-md-5 col-8 align-self-center">
+                <h3 class="text-themecolor m-b-0 m-t-0">数据应用</h3>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'analyse:app_list' %}">数据应用</a></li>
+                    <li class="breadcrumb-item active">{{ app.name }}字段列表</li>
+                </ol>
+            </div>
+            <div class="col-md-7 col-4 align-self-center">
+                <div class="d-flex m-t-10 justify-content-end">
+                    <a href="{% url 'analyse:field_add' app.id %}"
+                       class="btn btn-success waves-effect waves-light">新增字段</a>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="col-md-12">
+                            <div class="table-responsive m-t-20" style="clear: both;">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th class="text-center">字段名</th>
+                                        <th class="text-center">绑定标识</th>
+                                        <th class="text-center">字段类型</th>
+                                        <th class="text-center">默认显示</th>
+                                        <th class="text-center">主键</th>
+                                        <th class="text-center"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="sortable">
+                                    {% for f in fields %}
+                                        {% if f.enable %}
+                                            <tr fid="{{ f.id }}">
+                                                {% else %}
+                                            <tr class="table-warning" fid="{{ f.id }}">
+                                        {% endif %}
+                                    <td class="text-center">{{ f.name }}</td>
+                                    <td class="text-center">{{ f.bind_key }}</td>
+                                    <td class="text-center">
+                                        {% if f.type == 1 %}
+                                            文本
+                                        {% elif f.type == 2 %}
+                                            日期
+                                        {% elif f.type == 3 %}
+                                            日期时间
+                                        {% elif f.type == 4 %}
+                                            整数
+                                        {% elif f.type == 5 %}
+                                            浮点数
+                                        {% else %}
+                                            货币
+                                        {% endif %}
+                                    </td>
+                                    <td class="text-center">
+                                        {% if f.default_show %}
+                                            是
+                                        {% else %}
+                                            否
+                                        {% endif %}
+                                    </td>
+                                    <td style="width: 70px;" class="text-center">
+                                        {% if f.is_key %}
+                                            是
+                                        {% else %}
+                                            &nbsp;
+                                        {% endif %}
+                                    </td>
+                                    <td style="width: 50px;" class="text-center">
+                                        <a href="{% url 'analyse:field_edit' f.id %}" data-toggle="tooltip"
+                                           data-original-title="编辑"> <i
+                                                class="fa fa-pencil text-inverse m-r-10"></i> </a>
+                                    </td>
+                                    </tr>
+                                    {% empty %}
+                                        <tr>
+                                            <td colspan="5">还没有任何字段.</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+{% endblock %}
+
+{% block bodyscript %}
+
+    <script src="{% static 'js/analyse/field/list.js' %}?v=201806022"></script>
+
+{% endblock %}

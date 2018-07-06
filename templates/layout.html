@@ -1,0 +1,58 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'material-pro/assets/images/favicon.png' %}">
+    <title>{% block title %}{% endblock %}</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'material-pro/assets/plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{% static 'material-pro/horizontal/css/style.css' %}" rel="stylesheet">
+    <!-- You can change the theme colors from here -->
+    <link href="{% static 'material-pro/horizontal/css/colors/blue.css' %}" id="theme" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="{% static 'js/html5shiv.js' %}"></script>
+    <script src="{% static 'js/respond.min.js' %}"></script>
+    <![endif]-->
+    {% block headstyle %}{% endblock %}
+</head>
+
+<body>
+{% block content %}{% endblock %}
+<!-- ============================================================== -->
+<!-- All Jquery -->
+<!-- ============================================================== -->
+<script src="{% static 'material-pro/assets/plugins/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'js/jquery.form.min.js' %}"></script>
+<script src="{% static 'material-pro/assets/plugins/wizard/jquery.validate.min.js' %}"></script>
+<!-- Bootstrap tether Core JavaScript -->
+<script src="{% static 'material-pro/assets/plugins/bootstrap/js/popper.min.js' %}"></script>
+<script src="{% static 'material-pro/assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+<!-- slimscrollbar scrollbar JavaScript -->
+<script src="{% static 'material-pro/horizontal/js/jquery.slimscroll.js' %}"></script>
+<!--Wave Effects -->
+<script src="{% static 'material-pro/horizontal/js/waves.js' %}"></script>
+<!--Menu sidebar -->
+<script src="{% static 'material-pro/horizontal/js/sidebarmenu.js' %}"></script>
+<!--stickey kit -->
+<script src="{% static 'material-pro/assets/plugins/sticky-kit-master/dist/sticky-kit.min.js' %}"></script>
+<script src="{% static 'material-pro/assets/plugins/sparkline/jquery.sparkline.min.js' %}"></script>
+<!-- ============================================================== -->
+<!-- Style switcher -->
+<!-- ============================================================== -->
+<script src="{% static 'material-pro/assets/plugins/styleswitcher/jQuery.style.switcher.js' %}"></script>
+{% block bodyscript %}{% endblock %}
+</body>
+
+</html>
