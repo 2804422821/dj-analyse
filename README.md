@@ -1,8 +1,6 @@
 # dj-analyse
 一款开源的通用报表系统
-<<<<<<< HEAD
-![图片说明1](https://github.com/liuhuakun/BrushShots/blob/master/1.PNG)
-=======
+
 ![1](http://47.97.117.238/1.jpg)
 
 代码中并不包含materialpro，关于materialpro的模版大家请自行下载，如果不清楚如何使用请看下面的介绍
@@ -14,6 +12,5 @@
 
 ![自愿捐助](http://47.97.117.238/tufuzi2018.jpg)
 
-感谢如下支持者的捐助，项目捐助者名单，排名不分先后：
+# 捐助者名单，排名不分先后
 wings，
->>>>>>> 504a222f128df52d8c70c178667d73f5d85cc718
